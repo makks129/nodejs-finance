@@ -1,11 +1,12 @@
 import mongoose from 'mongoose';
-import { db } from '../config';
+import { runEnvironment, db } from '../config';
 // import Logger from '../core/Logger';
 
 // Build the connection string
-const dbURI = `mongodb://${db.user}:${encodeURIComponent(db.password)}@${db.host}:${db.port}/${
-  db.name
-}`;
+const dbURI =
+  runEnvironment === 'localhost'
+    ? `mongodb://${db.host}:${db.port}/${db.name}`
+    : `mongodb://${db.user}:${encodeURIComponent(db.password)}@${db.host}:${db.port}/${db.name}`;
 
 const options = {
   useNewUrlParser: true,

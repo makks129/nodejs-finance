@@ -1,4 +1,5 @@
 // Mapper for environment variables
+export const runEnvironment = process.env.RUN_ENV;
 export const environment = process.env.NODE_ENV;
 export const port = process.env.PORT;
 
