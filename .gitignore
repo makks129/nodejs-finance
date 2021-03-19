@@ -133,3 +133,10 @@ temp/
 
 # Ignore built files
 build
+
+# ignore test converage
+coverage
+
+# ignore key
+# NB! COMMENTING OUT BECAUSE THIS IS A DEMO PROJECT, NOT MEANT FOR PRODUCTION
+# *.pem

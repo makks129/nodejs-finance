@@ -4,6 +4,7 @@ _Feautures:_
 
 - TS
 - TS prettier
+- Docker (compose)
 
 _TODO:_
 
