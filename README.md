@@ -12,7 +12,7 @@ _Feautures:_
 
 _TODO:_
 
-- Add Logger? see comments
+- Convert Decimal128 to number
 
 _WHAT COULD BE IMPROVED_
 

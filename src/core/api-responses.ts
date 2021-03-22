@@ -12,7 +12,7 @@ enum StatusCode {
 abstract class ApiResponse {
   constructor(
     protected status: StatusCode,
-    protected message: string,
+    protected message?: string,
   ) {}
 
   protected prepare<T extends ApiResponse>(res: Response, response: T): Response {
