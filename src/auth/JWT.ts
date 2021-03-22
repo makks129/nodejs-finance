@@ -3,7 +3,6 @@ import { readFile } from 'fs';
 import { promisify } from 'util';
 import { sign } from 'jsonwebtoken';
 import { InternalError } from '../core/api-errors';
-// import Logger from './Logger';
 
 export default class JWT {
   static getPublicKey(): Promise<string> {

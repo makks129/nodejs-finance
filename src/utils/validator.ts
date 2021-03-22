@@ -1,6 +1,6 @@
 import Joi from '@hapi/joi';
 import { Request, Response, NextFunction } from 'express';
-// import Logger from '../core/Logger';
+import Log from '../utils/Log';
 import { BadRequestError } from '../core/api-errors';
 import { Types } from 'mongoose';
 
@@ -30,21 +30,22 @@ export default (schema: Joi.ObjectSchema, validateIn: Validate = Validate.BODY) 
   next: NextFunction,
 ) => {
   try {
-    console.log(`Validating schema...`);
+    Log.info(`Validating schema...`);
     
     const { error, value } = schema.validate(req[validateIn]);
 
     if (!error) {
-      console.log(`Validating schema - success`);
+      Log.info(`Validating schema - success`);
       return next();
     }
 
     const message = error.details.map((i) => i.message).join(',');
-    // Logger.error(message);
-    console.log(`Validating schema - error: ${message}`);
+
+    Log.error(`Validating schema - error: ${message}`);
+
     next(new BadRequestError(message));
   } catch (error) {
-    console.log(`Validating schema - error: ${error}`);
+    Log.error(`Validating schema - error: ${error}`);
     next(error);
   }
 };

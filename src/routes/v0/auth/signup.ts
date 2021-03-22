@@ -13,7 +13,6 @@ router.post(
   '/',
   validate(schema.signup),
   asyncHandler(async (req: PublicRequest, res, next) => {
-    console.log(`Starting signup...`);
 
     const user = await UserRepo.create(
       req.body.email,
@@ -22,14 +21,12 @@ router.post(
       req.body.profilePicUrl,
     );
 
-    console.log(`Signup -  success`);
-
     authenticateLocal(req, res, () => {
-      console.log(`passport.authenticate('local') - success`);
 
       new SuccessResponse('Signup Successful', {
         user: user,
       }).send(res);
+      
     });
   }),
 );

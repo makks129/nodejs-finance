@@ -5,12 +5,11 @@ import morgan from 'morgan';
 import { corsUrl} from './config';
 import routesV0 from './routes/v0';
 import passport from 'passport';
-// import Logger from './core/Logger';
+import Log from './utils/Log';
 // import { NotFoundError, ApiError, InternalError } from './core/ApiError';
 
 process.on('uncaughtException', (e) => {
-  // Logger.error(e);
-  console.log(e);
+  Log.error(e);
 });
 
 const app = express();
@@ -43,7 +42,7 @@ app.use((req, res, next) => next('404 Error'));
 //     ApiError.handle(err, res);
 //   } else {
 //     if (environment === 'development') {
-//       // Logger.error(err);
+//       // Log.error(err);
 //       console.log(err);
 //       return res.status(500).send(err.message);
 //     }
