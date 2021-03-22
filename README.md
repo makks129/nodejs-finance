@@ -8,6 +8,7 @@ _Feautures:_
 - nodemon
 - API key public access
 - Auth: passport, JWT
+- Saving logs locally
 
 _TODO:_
 
