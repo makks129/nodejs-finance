@@ -1,26 +1,28 @@
-import express, { NextFunction } from 'express';
-import { Request, Response } from 'express';
+import express from 'express';
 import ApiKeyRepo from '../db/repo/ApiKeyRepo';
 import { ForbiddenError } from '../core/api-errors';
 // import Logger from '../core/Logger';
 import { PublicRequest } from 'app-request';
-import schemas from './schemas';
-import validator, { Validate } from '../utils/validator';
-import asyncHandler from '../utils/asyncHandler';
+import schema from './schema';
+import validate, { Validate } from '../utils/validator';
+import asyncHandler from '../utils/async-handler';
 
 const router = express.Router();
 
 export default router.use(
-  validator(schemas.apiKey, Validate.HEADERS),
+  validate(schema.apiKey, Validate.HEADERS),
   asyncHandler(async (req: PublicRequest, res, next) => {
     // @ts-ignore
     req.apiKey = req.headers['x-api-key'].toString();
 
     const apiKey = await ApiKeyRepo.findByKey(req.apiKey);
-    // Logger.info(apiKey);
-    console.log(apiKey);
 
-    if (!apiKey) throw new ForbiddenError();
+    if (!apiKey) {
+      console.log(`x-api-key not found`);
+      throw new ForbiddenError();
+    }
+
+    console.log(`x-api-key: ${apiKey.key}`);
     return next();
   }),
 );

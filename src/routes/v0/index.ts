@@ -1,14 +1,8 @@
 import express from 'express';
 import apiKeyValidator from '../../auth/api-key-validator';
-// import signup from './access/signup';
-// import login from './access/login';
-// import logout from './access/logout';
-// import token from './access/token';
-// import blogList from './blog/blogList';
-// import blogDetail from './blog/blogDetail';
-// import writer from './blog/writer';
-// import editor from './blog/editor';
-// import user from './profile/user';
+import signup from './auth/signup';
+import login from './auth/login';
+import test from './auth/test';
 
 const router = express.Router();
 
@@ -16,14 +10,9 @@ const router = express.Router();
 // Below all APIs are public APIs protected by api key
 router.use('/', apiKeyValidator);
 
-// router.use('/signup', signup);
-// router.use('/login', login);
-// router.use('/logout', logout);
-// router.use('/token', token);
+router.use('/signup', signup);
+router.use('/login', login);
+router.use('/test', test);
 // router.use('/blogs', blogList);
-// router.use('/blog', blogDetail);
-// router.use('/writer/blog', writer);
-// router.use('/editor/blog', editor);
-// router.use('/profile', user);
 
 export default router;

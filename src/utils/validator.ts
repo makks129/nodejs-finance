@@ -30,16 +30,21 @@ export default (schema: Joi.ObjectSchema, validateIn: Validate = Validate.BODY) 
   next: NextFunction,
 ) => {
   try {
-    const { error } = schema.validate(req[validateIn]);
+    console.log(`Validating schema...`);
+    
+    const { error, value } = schema.validate(req[validateIn]);
 
-    if (!error) return next();
+    if (!error) {
+      console.log(`Validating schema - success`);
+      return next();
+    }
 
     const message = error.details.map((i) => i.message).join(',');
     // Logger.error(message);
-    console.log(message);
-
+    console.log(`Validating schema - error: ${message}`);
     next(new BadRequestError(message));
   } catch (error) {
+    console.log(`Validating schema - error: ${error}`);
     next(error);
   }
 };

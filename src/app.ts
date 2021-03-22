@@ -1,8 +1,10 @@
 import express, { Request, Response, NextFunction } from 'express';
 import './db'; // init DB
 import cors from 'cors';
-import { corsUrl, environment } from './config';
+import morgan from 'morgan';
+import { corsUrl} from './config';
 import routesV0 from './routes/v0';
+import passport from 'passport';
 // import Logger from './core/Logger';
 // import { NotFoundError, ApiError, InternalError } from './core/ApiError';
 
@@ -13,9 +15,17 @@ process.on('uncaughtException', (e) => {
 
 const app = express();
 
+// Init express
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ limit: '10mb', extended: true, parameterLimit: 50000 }));
 
+// Init morgan
+app.use(morgan('dev'));
+
+// Init passport
+app.use(passport.initialize());
+
+// Init CORS
 app.use(cors({ origin: corsUrl, optionsSuccessStatus: 200 }));
 
 // Routes

@@ -5,7 +5,9 @@ _Feautures:_
 - TS
 - TS prettier
 - Docker (compose)
+- nodemon
 - API key public access
+- Auth: passport, JWT
 
 _TODO:_
 
