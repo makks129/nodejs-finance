@@ -3,6 +3,19 @@
 ### Idea
 Create an API to track your assets, asset price changes and transaction history. Additional features can be implemented, as automatic Dollar-cost averaging (DCA) once every certain period, integrations with 3rd party APIs, and more.
 
+__Note:__
+
+- __This is a test project! Private keys wouldn't be commited to git otherwise.__
+- __This project is work in progress and has a lot to improve.__
+
+---
+
+### How to run (Docker)
+1. Clone repo
+2. [Install Docker](https://docs.docker.com/get-docker/)
+3. run `docker-compose up`
+4. See API docs [here](https://documenter.getpostman.com/view/14918328/TzCFhqn4)
+
 ### Description of current features
 - API key public access
 - User creation
@@ -22,7 +35,9 @@ Create an API to track your assets, asset price changes and transaction history.
 - nodemon
 - Saving logs locally
 
-### Work in progress (WIP)
+---
+
+### Currently working on
 - Tests! Improve test coverage
 
 ### Improvements
