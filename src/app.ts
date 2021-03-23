@@ -18,16 +18,16 @@ const app = express();
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ limit: '10mb', extended: true, parameterLimit: 50000 }));
 
-// Init morgan
+// Init morgan (logger)
 app.use(morgan('dev'));
 
-// Init passport
+// Init passport (authentication)
 app.use(passport.initialize());
 
 // Init CORS
 app.use(cors({ origin: corsUrl, optionsSuccessStatus: 200 }));
 
-// Routes
+// Set routes
 app.use('/v0', routesV0);
 
 // Catch 404 and forward to error handler

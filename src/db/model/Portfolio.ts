@@ -12,6 +12,26 @@ export interface Asset extends Document {
   quantity: string;
 }
 
+export const assetSchema = new Schema(
+  {
+    type: {
+      type: Schema.Types.String,
+      required: true,
+      trim: true,
+    },
+    ticker: {
+      type: Schema.Types.String,
+      required: true,
+      trim: true,
+    },
+    quantity: {
+      type: Schema.Types.Decimal128,
+      required: true,
+    },
+  },
+  { timestamps: true },
+)
+
 const portfolioSchema = new Schema(
   {
     user: {
@@ -20,25 +40,7 @@ const portfolioSchema = new Schema(
     },
     assets: [
       {
-        type: new Schema(
-          {
-            type: {
-              type: Schema.Types.String,
-              required: true,
-              trim: true,
-            },
-            ticker: {
-              type: Schema.Types.String,
-              required: true,
-              trim: true,
-            },
-            quantity: {
-              type: Schema.Types.Decimal128,
-              required: true,
-            },
-          },
-          { timestamps: true },
-        ),
+        type: assetSchema
       },
     ],
   },

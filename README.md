@@ -12,6 +12,7 @@ _Feautures:_
 
 _TODO:_
 
+- Instead of simple transaction implement deposit, exchange and withdrawal
 - Convert Decimal128 to number
 
 _WHAT COULD BE IMPROVED_
