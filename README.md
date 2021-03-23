@@ -1,27 +1,37 @@
-# API for managing a personal portfolio
+# nodejs-finance - API for managing your personal portfolio
 
-_Feautures:_
+### Idea
+Create an API to track your assets, asset price changes and transaction history. Additional features can be implemented, as automatic Dollar-cost averaging (DCA) once every certain period, integrations with 3rd party APIs, and more.
 
-- TS
+### Description of current features
+- API key public access
+- User creation
+- Login (provision of JWT)
+- Access to portfolio
+- Access to assets and adding new assets
+- Access to transaction history
+- Tests (partially)
+- [Full API documentation](https://documenter.getpostman.com/view/14918328/TzCFhqn4)
+
+### Technologies used
+- TypeScript
+- MondoDB, mongoose
 - TS prettier
 - Docker (compose)
-- nodemon
-- API key public access
 - Auth: passport, JWT
+- nodemon
 - Saving logs locally
 
-_TODO:_
+### Work in progress (WIP)
+- Tests! Improve test coverage
 
-- Instead of simple transaction implement deposit, exchange and withdrawal
+### Improvements
 - Convert Decimal128 to number
-- Simplify and improve error handling
-- Test: test JWT auth
+- Dependency Injection?
+- Try out different architectural solutions
+- Instead of simple transaction implement deposit, exchange and withdrawal
 
-_WHAT COULD BE IMPROVED_
-
-- DI
-- Arch
-
-### API Documentation
-
-https://documenter.getpostman.com/view/14918328/TzCFhqn4
+### Grand plans for the future
+- Implement connection with 3rd party API to get asset prices
+- Implement DCA strategies
+- Automate DCA completely (if possible)
