@@ -8,6 +8,9 @@ export default class PortfolioRepo {
   }
 
   public static async addAsset(user: User, asset: Asset): Promise<Portfolio> {
+    // Add new transaction
+    await TransactionRepo.add(user, asset);
+
     // Find portfolio
     var portfolio = await PortfolioRepo.findByUser(user);
     if (!portfolio) {
@@ -26,14 +29,9 @@ export default class PortfolioRepo {
     }
 
     // Update and return portfolio
-    const result = PortfolioModel.findOneAndUpdate({ user: user }, { ...portfolio })
+    return PortfolioModel.findOneAndUpdate({ user: user }, { ...portfolio }, { new: true })
       .lean<Portfolio>()
       .exec();
-
-    // Add new transaction
-    await TransactionRepo.add(user, asset);
-
-    return result;
   }
 
   private static async create(user: User, assets: Asset[] = <Asset[]>[]): Promise<Portfolio> {

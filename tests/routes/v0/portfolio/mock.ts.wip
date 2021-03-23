@@ -1,0 +1,59 @@
+// import { Types } from 'mongoose';
+// import { Portfolio, Asset } from '../../../../src/db/model/Portfolio';
+// import { User } from '../../../../src/db/model/User';
+
+// jest.unmock('../../../../src/db/repo/PortfolioRepo');
+
+// export const USER_ID = new Types.ObjectId();
+// export const PORTFOLIO_ID = new Types.ObjectId();
+// export const ASSET_ID = new Types.ObjectId();
+// export const BLOG_URL = 'abc';
+
+// export const mockPortfolioFindByUser = jest.fn(
+//   async (user: User): Promise<Portfolio | null> => {
+//     if (user._id === USER_ID)
+//       return {
+//         _id: PORTFOLIO_ID,
+//         user: user,
+//         assets: <Asset[]>[],
+//       } as Portfolio;
+//     return null;
+//   },
+// );
+
+// export const mockPortfolioAddAsset = jest.fn(
+//   async (user: User, asset: Asset): Promise<Portfolio | null> => {
+//     if (user._id === USER_ID)
+//       return {
+//         _id: PORTFOLIO_ID,
+//         user: user,
+//         assets: [asset],
+//       } as Portfolio;
+//     return null;
+//   },
+// );
+
+// export const mockPortfolioGetAsset = jest.fn(
+//   async (user: User, ticker: string): Promise<Asset | null> => {
+//     if (user._id === USER_ID)
+//       return {
+//         _id: ASSET_ID,
+//         type: '',
+//         ticker: ticker,
+//         quantity: '',
+//       } as Asset;
+//     return null;
+//   },
+// );
+
+// jest.mock('../../../../src/db/repo/PortfolioRepo', () => ({
+//   get findByUser() {
+//     return mockPortfolioFindByUser;
+//   },
+//   get addAsset() {
+//     return mockPortfolioAddAsset;
+//   },
+//   get getAsset() {
+//     return mockPortfolioGetAsset;``
+//   },
+// }));

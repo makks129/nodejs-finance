@@ -1,6 +1,6 @@
 import express from 'express';
 import ApiKeyRepo from '../db/repo/ApiKeyRepo';
-import { ForbiddenError } from '../core/api-errors';
+import { ApiKeyError } from '../core/api-errors';
 import { PublicRequest } from 'app-request';
 import schema from './schema';
 import validate, { Validate } from '../utils/validator';
@@ -19,7 +19,7 @@ export default router.use(
     
     if (!apiKey) {
       Log.error(`x-api-key not found`);
-      throw new ForbiddenError();
+      throw new ApiKeyError();
     }
     
     Log.info(`x-api-key: ${apiKey.key}`);

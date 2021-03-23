@@ -7,7 +7,7 @@ import UserRepo from '../db/repo/UserRepo';
 
 const LocalStrategy = passportLocal.Strategy;
 passport.use('local', new LocalStrategy({ usernameField: 'email' }, UserModel.authenticate()));
-export const authenticateLocal = passport.authenticate('local');
+export const authenticateLocal = passport.authenticate('local', { session: false });
 
 const JwtStrategy = passportJwt.Strategy;
 const ExtractJwt = passportJwt.ExtractJwt;
@@ -28,4 +28,4 @@ passport.use(
     },
   ),
 );
-export const authenticateJwt = passport.authenticate('jwt', { session: false })
+export const authenticateJwt = passport.authenticate('jwt', { session: false });

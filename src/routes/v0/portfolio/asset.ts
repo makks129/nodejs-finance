@@ -6,24 +6,23 @@ import { User } from '../../../db/model/User';
 import PortfolioRepo from '../../../db/repo/PortfolioRepo';
 import validate, { Validate } from '../../../utils/validator';
 import schema from './schema';
+import authSchema from '../../../auth/schema';
 
 const router = express.Router();
 
-router.use('/', authenticateJwt);
+router.use('/', validate(authSchema.auth, Validate.HEADERS), authenticateJwt);
 
 router.get(
   '/',
   validate(schema.getAsset, Validate.QUERY),
   asyncHandler(async (req, res) => {
-
     const user = req.user as User;
     const ticker = req.query.ticker as string;
     const asset = await PortfolioRepo.getAsset(user, ticker);
 
-    new SuccessResponse('Asset', { 
-      asset : asset
+    new SuccessResponse('Asset', {
+      asset: asset,
     }).send(res);
-
   }),
 );
 
@@ -31,14 +30,12 @@ router.post(
   '/',
   validate(schema.postAsset),
   asyncHandler(async (req, res) => {
-
     const user = req.user as User;
     const updatedPortfolio = await PortfolioRepo.addAsset(user, req.body);
 
-    new SuccessResponse('Asset added', { 
-      portfolio : updatedPortfolio
+    new SuccessResponse('Asset added', {
+      portfolio: updatedPortfolio,
     }).send(res);
-
   }),
 );
 

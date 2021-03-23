@@ -4,10 +4,12 @@ import asyncHandler from '../../../utils/async-handler';
 import { authenticateJwt } from '../../../auth';
 import { User } from '../../../db/model/User';
 import TransactionRepo from '../../../db/repo/TransactionRepo';
+import authSchema from '../../../auth/schema';
+import validate, { Validate } from '../../../utils/validator';
 
 const router = express.Router();
 
-router.use('/', authenticateJwt);
+router.use('/', validate(authSchema.auth, Validate.HEADERS), authenticateJwt);
 
 router.get(
   '/',
