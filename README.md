@@ -1,12 +1,12 @@
 # nodejs-finance - API for managing your personal portfolio
 
 ### Idea
-Create an API to track your assets, asset price changes and transaction history. Additional features can be implemented, as automatic Dollar-cost averaging (DCA) once every certain period, integrations with 3rd party APIs, and more.
+Create an API to track your assets, asset price changes and transaction history. Additional features can be implemented, as automatic dollar-cost averaging (DCA) once every certain period, integrations with 3rd party APIs, and more.
 
 __Note:__
 
-- __This is a test project! Private keys wouldn't be commited to git otherwise.__
-- __This project is work in progress and has a lot to improve.__
+- __This is a simple demo project, which is still work in progress and has a lot to improve.__
+- __For demo purposes private keys are commited to git.__
 
 ---
 
@@ -38,13 +38,13 @@ __Note:__
 ---
 
 ### Currently working on
-- Tests! Improve test coverage
+- Tests! Improving test coverage
+- Try out different architectural solutions
 
 ### Improvements
-- Convert Decimal128 to number
-- Dependency Injection?
-- Try out different architectural solutions
+- Make more SOLID: e.g. DI
 - Instead of simple transaction implement deposit, exchange and withdrawal
+- Convert Decimal128 to number
 
 ### Grand plans for the future
 - Implement connection with 3rd party API to get asset prices
